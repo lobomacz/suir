@@ -5,12 +5,15 @@ module.exports = {
 		tabla:{
 			type:Text,
 			isRequired:true,
-			isUnique:true
+			isUnique:true,
 		},
 		listaDetalle:{
 			type:Relationship,
 			ref:'DetalleTabla.tabla',
-			many:true
-		}
+			many:true,
+		},
 	}
 };
+
+
+

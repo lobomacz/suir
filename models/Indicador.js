@@ -1,5 +1,5 @@
 
-const { File, Relationship, Slug, Select, Text } = require('@keystonejs/fields');
+const { Checkbox, File, Relationship, Slug, Select, Text } = require('@keystonejs/fields');
 const { LocalFileAdapter } = require('@keystonejs/file-adapters');
 
 const imgAdapter = new LocalFileAdapter({
@@ -24,7 +24,7 @@ module.exports = {
 			isUnique:true
 		},
 		descripcion:{label:'Descripción', type:Text, isMultiline:true, isRequired:true, adminDoc:'Descripción detallada del indicador y a partir de qué variables o datos se obtiene.'},
-		sector:{label:'Sector de Desarrollo', type:Relationship, ref:'DetalleTabla', isRequired:true},
+		//sector:{label:'Sector de Desarrollo', type:Relationship, ref:'DetalleTabla', isRequired:true},
 		formula:{label:'Fórmula', type:Text, isRequired:true, adminDoc:'Fórmula con la que se calcula el indicador. Ejemplo: (Total/Cantidad)*100'},
 		metrica:{
 			label:'Métrica',
@@ -76,15 +76,15 @@ module.exports = {
 			defaultValue:null
 		},
 		tags:{label:'Etiquetas', type:Text, isRequired:false, adminDoc:'Etiquetas con las que se clasifica el indicador.'},
-		entidad:{label:'Entidad de Seguimiento', type:Relationship, ref:'Entidad', adminDoc:'Entidad del G.R.A.C.C.S. encargada del seguimiento del indicador.'},
-		colaboradores:{label:'Instituciones Colaboradoras', type:Relationship, ref:'Institucion.indicadores', many:true},
-		responsable:{label:'Responsable', type:Relationship, ref:'User', adminDoc:'Usuario responsable de alimentar los datos del indicador.'},
-		desagregacion:{
+		//entidad:{label:'Entidad de Seguimiento', type:Relationship, ref:'Entidad', adminDoc:'Entidad del G.R.A.C.C.S. encargada del seguimiento del indicador.'},
+		//colaboradores:{label:'Instituciones Colaboradoras', type:Relationship, ref:'Institucion.indicadores', many:true},
+		//responsable:{label:'Responsable', type:Relationship, ref:'User', adminDoc:'Usuario responsable de alimentar los datos del indicador.'},
+		/*desagregacion:{
 			label:'Nivel Mínimo de Desagregación', 
 			type:Relationship,
 			ref:'DetalleTabla',
 			isRequired:true
-		},
+		},*/
 		desagregacionSexo:{label:'Desagregación por sexo', type:Checkbox, defaultValue:false},
 		desagregacionEtnia:{label:'Desagregación por etnia', type:Checkbox, defaultValue:false},
 		tipoValor:{
@@ -98,15 +98,15 @@ module.exports = {
 			adminDoc:'Tipo de número para el valor del indicador', isRequired:true},
 		fuente:{label:'Fuentes de Datos', type:Text, isRequired:true},
 		marcoLegal:{label:'Marco Legal', type:Text, isRequired:true},
-		estado:{
+		/*estado:{
 			label:'Estado',
 			type:Relationship,
 			ref:'DetalleTabla'
-		},
+		},*/
 		activo:{label:'Activo', type:Checkbox, defaultValue:true},
 		seguimiento:{label:'En Seguimiento', type:Checkbox, defaultValue:true},
-		valores:{label:'Valores', type:Relationship, ref:'ValorIndicador.indicador', many:true, isRequired:false, defaultValue:null},
-		comentarios:{label:'Comentarios', type:Relationship, ref:'Comentario.indicador', many:true, isRequired:false, defaultValue:null},
+		//valores:{label:'Valores', type:Relationship, ref:'ValorIndicador.indicador', many:true, isRequired:false, defaultValue:null},
+		//comentarios:{label:'Comentarios', type:Relationship, ref:'Comentario.indicador', many:true, isRequired:false, defaultValue:null},
 	}
 };
 

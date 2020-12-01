@@ -20,7 +20,7 @@ module.exports = {
 		title:{label:'Título', type:Text, isRequired:true},
 		slug:{type:Slug},
 		fecha:{label:'Fecha', type:CalendarDay, isRequired:true},
-		autor:{label:'Autor', type:Relationship},
+		//autor:{label:'Autor', type:Relationship, ref:'User', isRequired:true},
 		portada:{
 			label:'Imagen de Portada',
 			type:File,
@@ -52,9 +52,9 @@ module.exports = {
 		},
 		documento:{label:'Documento', type:File, adapter:fileAdapter, isRequired:false, defaultValue:null},
 		etiquetas:{label:'Etiquetas', type:Text, isRequired:true},
-		tipo:{label:'Tipo de Publicación', type:Relationship, ref:'DetalleTabla', isRequired:true},
-		estado:{label:'Estado', type:Relationship, ref:'DetalleTabla', isRequired:true},
-		comentarios:{type:Relationship, ref:'Comentario.publicacion', many:true, defaultValue:null, isRequired:false},
+		//tipo:{label:'Tipo de Publicación', type:Relationship, ref:'DetalleTabla', isRequired:true},
+		//estado:{label:'Estado', type:Relationship, ref:'DetalleTabla', isRequired:true},
+		//comentarios:{type:Relationship, ref:'Comentario.publicacion', many:true, defaultValue:null, isRequired:false},
 		creado:{label:'Creado', type:DateTime, isRequired:true},
 		publicado:{label:'Publicado', type:DateTime, isRequired:false, defaultValue:null}
 	}

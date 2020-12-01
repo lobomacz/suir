@@ -1,5 +1,25 @@
 
-const { Checkbox, Text, Relationship, Virtual } = require('@keystonejs/fields');
+const { Checkbox, Password, Relationship, Text, Virtual } = require('@keystonejs/fields');
+
+// Access control functions
+const userIsAdmin = ({ authentication: { item: user } }) => Boolean(user && user.isAdmin);
+const userOwnsItem = ({ authentication: { item: user } }) => {
+  if (!user) {
+    return false;
+  }
+
+  // Instead of a boolean, you can return a GraphQL query:
+  // https://www.keystonejs.com/api/access-control#graphqlwhere
+  return { id: user.id };
+};
+
+const userIsAdminOrOwner = auth => {
+  const isAdmin = access.userIsAdmin(auth);
+  const isOwner = access.userOwnsItem(auth);
+  return isAdmin ? isAdmin : isOwner;
+};
+
+const access = { userIsAdmin, userOwnsItem, userIsAdminOrOwner };
 
 module.exports = {
 	fields: {
@@ -10,7 +30,7 @@ module.exports = {
       type: Text,
       isUnique: true,
     },
-    entidad:{label:'Entidad', type:Relationship, ref:'Entidad', isRequired:false, defaultValue:null},
+    entidad: {label:'Entidad', type:Relationship, ref:'Entidad', isRequired:false, defaultValue:null},
     isAdmin: {
       type: Checkbox,
       // Field-level access controls
@@ -22,10 +42,7 @@ module.exports = {
     password: {
       type: Password,
     },
-    likePost:{type:Relationship, ref:'Publicacion.likes', many:true, isRequired:false, defaultValue:null},
-    dislikePost:{type:Relationship, ref:'Publicacion.dislikes', many:true, isRequired:false, defaultValue:null},
-    likeIndicador:{type:Relationship, ref:'ValorIndicador.likes', many:true, isRequired:false, defaultValue:null},
-    dislikeIndicador:{type:Relationship, ref:'ValorIndicador.likes', many:true, isRequired:false, defaultValue:null},
+    moderador: {label:'Es Moderador', type:Checkbox, defaultValue:false, isRequired:false},
   },
   // List-level access controls
   access: {
