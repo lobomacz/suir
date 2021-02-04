@@ -11,20 +11,11 @@ module.exports = {
 		},
 		movil:{label:'Móvil', type:Text, isRequired:true},
 		correo:{label:'Correo-e', type:Text, defaultValue:null},
-		//institucion:{label:'Institución', type:Relationship, ref:'Institucion.contacto', isRequired:true},
+		institucion:{label:'Institución', type:Relationship, ref:'Institucion.contactos', isRequired:true, many:false},
 		cargo:{
 			label:'Cargo', 
-			type:Select,
-			options:[
-				'delegado',
-				'alcalde',
-				'director',
-				'administrador',
-				'gerente',
-				'jefe',
-				'tecnico',
-				'responsable',
-			],
+			type:Relationship,
+			ref:'DetalleTabla',
 			isRequired:true
 		},
 	}

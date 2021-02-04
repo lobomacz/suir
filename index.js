@@ -23,7 +23,9 @@ const LinkSchema = require('./models/LinkExterno.js');
 const ComentarioSchema = require('./models/Comentario.js');
 const IndicadorSchema = require('./models/Indicador.js');
 const ValorSchema = require('./models/ValorIndicador.js');
-const PublicacionSchema = require('./models/Publicacion.js');                                                                                                                                                                                                                                                 
+const PublicacionSchema = require('./models/Publicacion.js'); 
+const ExternalLinkSchema = require('./models/ExternalLink.js');   
+const AnuncioSchema = require('./models/Anuncio.js');                                                                                                                                                                                                                                             
 
 
 const keystone = new Keystone({
@@ -44,6 +46,8 @@ keystone.createList('Comentario', ComentarioSchema);
 keystone.createList('Publicacion', PublicacionSchema);
 keystone.createList('Indicador', IndicadorSchema);
 keystone.createList('ValorIndicador', ValorSchema);
+keystone.createList('ExternalLink', ExternalLinkSchema);
+keystone.createList('Anuncio', AnuncioSchema);
 
 
 // Consulta personalizada de tablas
@@ -75,6 +79,50 @@ keystone.extendGraphQLSchema({
 */
 // Fin de consulta personalizada
 
+const nuxtConf = {
+  buildDir: 'nuxt-app',
+  components: true,
+  modules: [
+    '@nuxt/components',
+    'bootstrap-vue/nuxt',
+  ],
+  bootstrapVue: {
+    icons: true,
+  },
+  transformAssetUrls: {
+    video: ['src', 'poster'],
+    source: 'src',
+    img: 'src',
+    image: 'xlink:href',
+    'b-avatar': 'src',
+    'b-img': 'src',
+    'b-img-lazy': ['src', 'blank-src'],
+    'b-card': 'img-src',
+    'b-card-img': 'src',
+    'b-card-img-lazy': ['src', 'blank-src'],
+    'b-carousel-slide': 'img-src',
+    'b-embed': 'src',
+  },
+  head: {
+    title: "Sistema de Gestión de Información Regional",
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'description', hid: 'description', content: 'Sistema de Gestión de Información Estadística Regional'},
+      { name: 'keywords', content: 'GRACCS, RACCS, Gobierno Regional, Indicadores, Noticias' },
+      { name: 'author', content: 'Marvin Córdoba' }
+    ],
+  },
+  css:[
+    '~/assets/css/bebas.css',
+    '~/assets/css/lato.css',
+    '~/assets/sass/estilos.scss',
+  ],
+  static: {
+    prefix:false,
+  }
+};
+
 
 const authStrategy = keystone.createAuthStrategy({
   type: PasswordAuthStrategy,
@@ -85,15 +133,16 @@ module.exports = {
   keystone,
   apps: [
     new GraphQLApp(),
+    new NuxtApp(nuxtConf),
     new AdminUIApp({
       name: PROJECT_NAME,
       enableDefaultRoute: true,
       authStrategy,
     }),
-    new NuxtApp(),
     new StaticApp({
       path:'/',
       src:'public',
     }),
   ],
 };
+

@@ -68,6 +68,7 @@ module.exports = async keystone => {
         {data: {tabla:"sexo"}},
         {data: {tabla:"etnia"}},
         {data: {tabla:"tipo_pub"}},
+        {data: {tabla:"cargo"}},
       ],
       returnFields: 'id, tabla',
     });
@@ -111,11 +112,21 @@ module.exports = async keystone => {
           t_items.push({data: {tabla:{connect:{id:t.id}}, elemento:"ulwa", codigo_eq:"ulw"}});
           t_items.push({data: {tabla:{connect:{id:t.id}}, elemento:"rama", codigo_eq:"ram"}});
           break;
+        case 'cargo':
+          t_items.push({data: {tabla:{connect:{id:t.id}}, elemento:"delegado", codigo_eq:"deg"}});
+          t_items.push({data: {tabla:{connect:{id:t.id}}, elemento:"alcalde", codigo_eq:"alc"}});
+          t_items.push({data: {tabla:{connect:{id:t.id}}, elemento:"director", codigo_eq:"dir"}});
+          t_items.push({data: {tabla:{connect:{id:t.id}}, elemento:"administrador", codigo_eq:"adm"}});
+          t_items.push({data: {tabla:{connect:{id:t.id}}, elemento:"jefe", codigo_eq:"jf"}});
+          t_items.push({data: {tabla:{connect:{id:t.id}}, elemento:"tecnico", codigo_eq:"tec"}});
+          t_items.push({data: {tabla:{connect:{id:t.id}}, elemento:"responsable", codigo_eq:"resp"}});
+          break;
         default:
-          t_items.push({data: {tabla:{connect:{id:t.id}}, elemento:"noticia", codigo_eq:"not"}});
-          t_items.push({data: {tabla:{connect:{id:t.id}}, elemento:"informe de actividad", codigo_eq:"inf"}});  
+          t_items.push({data: {tabla:{connect:{id:t.id}}, elemento:"noticia", codigo_eq:"noti"}});
+          t_items.push({data: {tabla:{connect:{id:t.id}}, elemento:"informe", codigo_eq:"info"}});  
           break;
       }
+
 
       await createItems({
         keystone,
@@ -128,7 +139,7 @@ module.exports = async keystone => {
   }
 
   // CONSULTA DE PRUEBA PARA VERIFICAR GRAPHQL
-
+  /*
   const { 
     data : {
       Tabla: {
@@ -147,7 +158,7 @@ module.exports = async keystone => {
       }
     }`,
   });
-
+  */
   // FIN DE LA CONSULTA DE RPRUEBA
 
 };

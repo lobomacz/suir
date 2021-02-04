@@ -1,0 +1,18 @@
+
+%menu-link {
+	display: inline-block;
+	position: relative;
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    border: 2px solid $color-white;
+    margin-left: 1.5rem;
+    border-radius: 50%;
+    z-index: inherit;
+    width: 4rem;
+    height: 4rem;
+    line-height: 4rem;
+    text-align: center;
+    color: $color-white;
+}

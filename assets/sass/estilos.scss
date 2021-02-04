@@ -1,0 +1,27 @@
+//Custom Bootstrap overrides
+$grid-breakpoints: (
+	xs:0,
+	sm:480px,
+	md:640px,
+	lg:992px,
+	xl:1300px
+	);
+
+$enable-rounded: false;
+
+//Bootstrap custom SCSS
+@import "bootstrap/scss/bootstrap.scss";
+@import "bootstrap-vue/src/index.scss";
+
+//Estilos personalizados
+@import "abstracts/variables";
+@import "abstracts/extends";
+@import "abstracts/mixins";
+@import "base/base";
+@import "base/typography";
+@import "base/utilities";
+@import "components/card";
+@import "components/carousel";
+@import "components/footer";
+@import "components/navbar";
+@import "pages/home";

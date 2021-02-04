@@ -1,0 +1,12 @@
+.card {
+
+	height: 30rem;
+
+	& a {
+		color: $color-primary;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
