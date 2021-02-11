@@ -1,6 +1,6 @@
 <template>
 	<b-container>
-		<b-row>
+		<b-row v-if="listrow == undefined">
 			<b-col>
 				<h1 v-bind:class="[{'u-bg-tertiary': publicaciones.tipo == 'noticia', 'u-bg-secondary': publicaciones.tipo=='informe'}, 'section-header']">{{ publicaciones.titulo }}</h1>
 			</b-col>
@@ -12,7 +12,7 @@
 			v-bind:publicacion="publicacion" 
 			/>
 		</b-row>
-		<b-row>
+		<b-row v-if="listrow == undefined">
 			<b-col cols="2" class="mx-auto my-4 text-center">
 				<b-button :to="publicaciones.enlace" variant="dark" size="lg" class="text-uppercase">Mas {{ publicaciones.tipo }}s</b-button>
 			</b-col>
@@ -21,6 +21,6 @@
 </template>
 <script>
 	export default {
-		props:['publicaciones']
+		props:['publicaciones', 'listrow']
 	};
 </script>

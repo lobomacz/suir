@@ -28,12 +28,12 @@
                     <ul class="nav navbar-menu__list">
                         
                         <li class="navbar-menu__list-el">
-                            <a id="lnkNoticias" class="navbar-menu__list-ln" v-bind:class="{active:sectionActive=='noticias'}" href="#seccionNoticias" v-b-tooltip.hover.top title="Noticias">
+                            <a id="lnkNoticias" class="navbar-menu__list-ln" v-bind:class="{active:path.includes('noticias')}" v-bind:href="urlNoticias" v-b-tooltip.hover.top title="Noticias">
                                 <b-icon-newspaper class="navbar-menu__icon"></b-icon-newspaper>
                             </a>
                         </li>
                         <li class="navbar-menu__list-el">
-                            <a href="#seccionInformes" class="navbar-menu__list-ln" v-bind:class="{active:sectionActive=='informes'}" v-b-tooltip.hover.top title="Informes">
+                            <a v-bind:href="urlInformes" class="navbar-menu__list-ln" v-bind:class="{active:path.includes('informes')}" v-b-tooltip.hover.top title="Informes">
                                 <b-icon-file-text class="navbar-menu__icon"></b-icon-file-text>
                             </a>
                         </li>
@@ -54,7 +54,10 @@
 		data() {
 			return {
 				date: new Date(),
-				sectionActive: null,
+                path: this.$route.path,
+                sectionActive:null,
+                urlNoticias: "/publicaciones/noticias/page/1",
+                urlInformes: "/publicaciones/informes/page/1",
 			}
 		},
 	};

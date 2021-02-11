@@ -1,0 +1,5 @@
+.list-row {
+	&:not(:first-of-type) {
+		margin-top: 2rem;
+	}
+}

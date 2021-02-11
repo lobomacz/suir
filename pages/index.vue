@@ -73,7 +73,7 @@
 				noticias: {
 					titulo: "noticias",
 					tipo: "noticia",
-					enlace: "/publicaciones/noticia",
+					enlace: "/publicaciones/noticia/page/1",
 					lista: [
 						{id:1, titulo:"Llegan productos del campo a la ciudad de Bluefields", portada:"/img/productos_bluefields.jpg", url:"#"},
 						{id:2, titulo:"Se reactivan los viajes a Corn Island con la Motonave Río Escondido", portada:"/img/rio_escondido.jpg", url:"#"},
@@ -87,7 +87,7 @@
 				],
 				informes: {
 					tipo: "informe",
-					enlace:"/publicaciones/informe",
+					enlace:"/publicaciones/informe/page/1",
 					titulo: "gestión del graccs",
 					lista: [
 						{id: 1, titulo: "Reunión de la Secretaría de Salud con la Ministra ", portada: "/img/graccs.jpg", url:"#"},

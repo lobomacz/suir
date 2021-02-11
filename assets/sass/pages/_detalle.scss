@@ -1,0 +1,27 @@
+.detalle {
+	padding-top: 12rem;
+	color: $color-primary;
+	margin-bottom: 3rem;
+
+	&-title {
+		font-size: 2.5rem;
+		margin-bottom: 1.5rem;
+		border-bottom: 1px solid $color-grey-light-1;
+	}
+
+	&-body {
+		background-color: $color-grey-light-2;
+		border-radius: .5rem;
+		padding: 1rem;
+
+		&__img {
+			border-radius: .5rem;
+			margin-bottom: 2rem;
+		}
+
+		&__text {
+			font-size: 1.5rem;
+			text-align: justify;
+		}
+	}
+}
